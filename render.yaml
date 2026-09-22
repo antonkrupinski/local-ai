@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: local-llm-backend
+    env: docker
+    dockerfilePath: backend/Dockerfile
+    plan: standard-1x
+    autoDeploy: true
+    envVars:
+      - key: LLAMA_MODEL_PATH
+        value: /data/models/ggml-model.bin
+    disk:
+      name: model-data
+      sizeGB: 50
+      mountPath: /data
