@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>study</title>
+    <style>
+      body { font-family: system-ui, -apple-system, Arial, sans-serif; margin: 24px; }
+      textarea { width: 100%; height: 120px; }
+      #out { white-space: pre-wrap; background:#f7f7f8; padding:12px; border-radius:6px; margin-top:12px }
+    </style>
+  </head>
+  <body>
+    <h1>Local LLM Chat</h1>
+    <p>Enter a prompt and hit Send. Make sure the backend is running and a local ggml model path is configured.</p>
+    <textarea id="prompt" placeholder="Write your prompt here..."></textarea>
+    <div style="margin-top:8px">
+      <label>Max tokens: <input id="max_tokens" type="number" value="128" style="width:80px" /></label>
+      <label style="margin-left:12px">Temperature: <input id="temperature" type="number" step="0.1" value="0.7" style="width:80px" /></label>
+      <button id="send" style="margin-left:12px">Send</button>
+    </div>
+    <div id="out"></div>
+
+    <script src="/app.js"></script>
+  </body>
+</html>
