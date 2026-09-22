@@ -1,5 +1,9 @@
 name: Deploy Frontend to GitHub Pages
 
+permissions:
+  contents: write
+  pages: write
+
 on:
   push:
     branches: [ main, master ]
@@ -11,6 +15,19 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+
+      - name: Setup git user
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Debug git state
+        run: |
+          git status --porcelain --branch || true
+          git remote -v || true
+          git rev-parse --abbrev-ref HEAD || true
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
